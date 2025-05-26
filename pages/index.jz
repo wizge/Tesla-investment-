@@ -1,0 +1,86 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+
+export default function HomePage() {
+  const packages = [
+    { name: "Silver Package", description: "A great starting point for new investors.", price: "$200" },
+    { name: "Gold Package", description: "Balanced option for steady growth.", price: "$750" },
+    { name: "Platinum Package", description: "Premium plan for experienced investors.", price: "$1500" },
+    { name: "Diamond Package", description: "Elite access with maximum returns.", price: "$1200" },
+    { name: "Crypto Growth Plan", description: "Tap into cryptocurrency market growth.", price: "$600" },
+    { name: "Real Estate Fund", description: "Backed by real estate investments.", price: "$1000" },
+    { name: "Green Energy Plan", description: "Invest in sustainable and green projects.", price: "$850" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-black">
+      <header className="text-center mb-12 p-6 bg-red-600">
+        <Image src="/tesla-logo.png" alt="Tesla Logo" width={80} height={80} className="mx-auto" />
+        <h1 className="text-4xl font-bold text-white mt-2">Tesla Investment</h1>
+        <p className="text-lg text-white mt-1">Secure and Smart Investment Packages Tailored for You</p>
+        <Link href="#signup">
+          <Button className="mt-4 bg-white text-red-600 hover:bg-gray-100">Sign Up</Button>
+        </Link>
+      </header>
+
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto p-6">
+        {packages.map((pkg, idx) => (
+          <Card key={idx} className="rounded-2xl shadow-md border border-red-600">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-2 text-red-600">{pkg.name}</h2>
+              <p className="text-gray-800 mb-4">{pkg.description}</p>
+              <p className="text-xl font-bold mb-4">{pkg.price}</p>
+              <Button className="w-full bg-red-600 text-white hover:bg-red-700">Invest Now</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section id="signup" className="bg-gray-100 py-12 px-6">
+        <h2 className="text-3xl font-bold text-center text-red-600 mb-6">Sign Up</h2>
+        <form className="max-w-xl mx-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <Input type="text" placeholder="Full Name" required />
+          <Input type="email" placeholder="Email Address" required />
+          <Input type="password" placeholder="Password" required />
+          <Input type="tel" placeholder="Phone Number" required />
+          <Button type="submit" className="w-full bg-red-600 text-white hover:bg-red-700">Register</Button>
+        </form>
+      </section>
+
+      <section className="py-12 px-6 bg-white">
+        <h2 className="text-3xl font-bold text-center text-red-600 mb-6">What Our Clients Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Card className="border border-red-600">
+            <CardContent className="p-6">
+              <p className="italic">“Tesla Investment helped me grow my portfolio quickly and safely.”</p>
+              <p className="mt-4 font-semibold text-red-600">— Sarah K.</p>
+            </CardContent>
+          </Card>
+          <Card className="border border-red-600">
+            <CardContent className="p-6">
+              <p className="italic">“The Platinum Package is worth every dollar. Highly recommend!”</p>
+              <p className="mt-4 font-semibold text-red-600">— James T.</p>
+            </CardContent>
+          </Card>
+          <Card className="border border-red-600">
+            <CardContent className="p-6">
+              <p className="italic">“Easy to use platform and excellent customer service.”</p>
+              <p className="mt-4 font-semibold text-red-600">— Monica L.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-12 px-6 bg-gray-100">
+        <h2 className="text-3xl font-bold text-center text-red-600 mb-6">Contact Us</h2>
+        <div className="max-w-xl mx-auto text-center">
+          <p className="mb-2">Have questions? Reach out to us at:</p>
+          <p className="text-red-600 font-semibold">teslainvestment627@gmail.com</p>
+        </div>
+      </section>
+    </div>
+  );
+}
